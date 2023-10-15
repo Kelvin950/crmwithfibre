@@ -7,6 +7,8 @@ import (
 	"github.com/jinzhu/gorm"
 	"github.com/kelvin950/crmwithfibre/database"
 	"github.com/kelvin950/crmwithfibre/lead"
+	
+_	"github.com/jinzhu/gorm/dialects/mysql"
 )
 
 
@@ -22,9 +24,9 @@ import (
 func initDb(){
    var err error 
 
-   database.DBConn ,err =  gorm.Open("sqlite3" , "lead.db")
+   database.DBConn ,err =  gorm.Open("mysql" , "myuser:mypassword@tcp(localhost:3306)/mydatabase?charset=utf8&parseTime=True&loc=Local")
    if err !=nil{
-	panic("Failed to connect ")
+	panic(err)
 } 
 
 fmt.Println("connection opened to database")
